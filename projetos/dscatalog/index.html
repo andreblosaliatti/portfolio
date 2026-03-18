@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DSCatalog | Case técnico — André Blos Aliatti</title>
+    <meta
+      name="description"
+      content="Case técnico do DSCatalog: backend com foco em testes automatizados, qualidade, camadas e boas práticas."
+    />
+
+    <!-- Web Awesome (CDN correto) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@awesome.me/webawesome@3.1.0/dist-cdn/styles/themes/default.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@awesome.me/webawesome@3.1.0/dist-cdn/webawesome.loader.js"
+    ></script>
+
+    <link rel="icon" href="../../assets/favicon.png" />
+    <link rel="stylesheet" href="/css/global.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="header">
+      <div class="container header-row">
+        <a class="brand" href="/" aria-label="Voltar para Home">
+          <img
+            class="brand-logo"
+            src="/assets/img/logo-andre-transp.png"
+            alt="André Blos Aliatti"
+            onerror="this.style.display='none'"
+          />
+          <span class="brand-text">André Blos Aliatti</span>
+        </a>
+
+        <nav class="nav-desktop" aria-label="Navegação principal">
+          <a class="nav-link-desktop" href="/">Início</a>
+          <a class="nav-link-desktop" href="/quem-e-andre-blos-aliatti/">Quem é André Blos Aliatti</a>
+          <a class="nav-link-desktop" href="/projetos-andre-blos-aliatti/">Projetos</a>
+          <a class="nav-link-desktop" href="/jornada-recomecar-ti-depois-dos-40/">Jornada</a>
+          <a class="nav-link-desktop" href="/blog/">Blog</a>
+          <a class="nav-link-desktop" href="/medicflow/">MedicFlow</a>
+          <a class="nav-link-desktop" href="/contato/">Contato</a>
+        </nav>
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="navPanel"
+        >
+          <span><wa-icon name="bars"></wa-icon></span>
+        </button>
+      </div>
+
+      <nav class="nav-panel" id="navPanel" hidden>
+        <div class="container nav-inner">
+            <a class="nav-link" href="/">Início</a>
+            <a class="nav-link" href="/quem-e-andre-blos-aliatti/">Quem é André Blos Aliatti</a>
+            <a class="nav-link" href="/projetos-andre-blos-aliatti/">Projetos</a>
+            <a class="nav-link" href="/jornada-recomecar-ti-depois-dos-40/">Jornada</a>
+            <a class="nav-link" href="/blog/">Blog</a>
+            <a class="nav-link" href="/medicflow/">MedicFlow</a>
+            <a class="nav-link nav-cta" href="/contato/">Contato</a>
+          </div>
+      </nav>
+    </header>
+
+    <main id="conteudo" class="main">
+      <!-- HERO -->
+      <section class="section hero">
+        <div class="container">
+          <p class="eyebrow">CASE TÉCNICO • BACKEND</p>
+
+          <h1 class="h1">
+            DSCatalog
+            <span class="h1-accent">Backend com foco em testes automatizados, qualidade e boas práticas</span>
+          </h1>
+
+          <p class="muted">Status: concluído (estudo) • Jan 2026</p>
+
+          <div class="chips">
+            <span class="chip">Backend</span>
+            <span class="chip">Java</span>
+            <span class="chip">Spring Boot</span>
+            <span class="chip">JUnit</span>
+            <span class="chip">Mockito</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CAPA -->
+      <section class="section">
+        <div class="container">
+          <div class="case-cover">
+            <img
+              src="/assets/img/projects/dscatalog.png"
+              alt="Capa do projeto DSCatalog"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTEÚDO + SIDEBAR -->
+      <section class="section">
+        <div class="container">
+          <div class="case-grid">
+            <!-- Coluna principal -->
+            <article class="card">
+              <h2 class="h2">Visão geral</h2>
+              <p class="muted">
+                O <strong>DSCatalog</strong> é um projeto focado em consolidar fundamentos de backend e, principalmente,
+                <strong>testes automatizados</strong> e qualidade de código em uma API bem organizada.
+              </p>
+
+              <h2 class="h2">Problema que resolve</h2>
+              <ul class="about-list">
+                <li>Dificuldade de refatorar com segurança sem testes</li>
+                <li>Falta de padronização entre camadas e contratos de API</li>
+                <li>Evolução do código quebrando regras de negócio sem perceber</li>
+              </ul>
+
+              <h2 class="h2">Arquitetura</h2>
+              <ul class="about-list">
+                <li>Backend em camadas (Controller / Service / Repository)</li>
+                <li>DTOs para entrada/saída com validações e contratos consistentes</li>
+                <li>Persistência com JPA/Hibernate (quando aplicável ao módulo)</li>
+              </ul>
+
+              <h2 class="h2">Foco do projeto</h2>
+              <ul class="about-list">
+                <li>Testes unitários (regras de negócio)</li>
+                <li>Testes de camada (Service/Controller) quando aplicável</li>
+                <li>Refatoração segura com apoio de testes</li>
+                <li>Boas práticas para evoluir API sem quebrar contrato</li>
+              </ul>
+
+              <h2 class="h2">Próximos passos</h2>
+              <ul class="about-list">
+                <li>Aumentar cobertura de testes e incluir integração</li>
+                <li>Reforçar documentação (Swagger/OpenAPI)</li>
+                <li>Pipeline simples (build + testes) no GitHub Actions</li>
+              </ul>
+
+              <div class="cta-row">
+                <a class="btn primary" href="/projetos/">Voltar aos projetos</a>
+                <a class="btn ghost" href="/contato/">Falar comigo</a>
+              </div>
+            </article>
+
+            <!-- Sidebar -->
+            <aside class="case-meta">
+              <div class="kv">
+                <div class="label">Stack</div>
+                <div class="value">Java • Spring Boot • JPA/Hibernate • JUnit • Mockito</div>
+              </div>
+
+              <div class="kv">
+                <div class="label">Pontos técnicos</div>
+                <div class="value">Testes • Camadas • DTOs • Qualidade</div>
+              </div>
+
+              <div class="kv">
+                <div class="label">Repositório / Demo</div>
+                <div class="value">
+                  <a class="link" href="https://github.com/andreblosaliatti/dscatalog" target="_blank" rel="noopener">Repositório GitHub →</a>
+                </div>
+              </div>
+
+              <div class="kv">
+                <div class="label">Tags</div>
+                <div class="value">
+                  <div class="tags">
+                    <span class="tag">Testes</span>
+                    <span class="tag">Boas práticas</span>
+                    <span class="tag">API</span>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- RELACIONADOS -->
+      <section class="section" aria-labelledby="rel-title">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="h2" id="rel-title">Outros projetos</h2>
+            <a class="link" href="/projetos/">Ver todos →</a>
+          </div>
+
+          <div class="posts">
+            <article class="post">
+              <h3 class="h3">MedicFlow</h3>
+              <p class="muted">SaaS para gestão clínica com prontuário, agenda e automações.</p>
+              <a class="link" href="/projetos/medicflow/">Ver case →</a>
+            </article>
+
+            <article class="post">
+              <h3 class="h3">DSCommerce</h3>
+              <p class="muted">Fullstack (DevSuperior) com backend + frontend integrados.</p>
+              <a class="link" href="/projetos/dscommerce/">Ver case →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> André Blos Aliatti</p>
+        <p class="footer-seo">
+          André Blos Aliatti desenvolvedor backend Java com foco em projetos reais,
+          arquitetura de software e conteúdo técnico aplicável.
+        </p>
+        <div class="footer-links" aria-label="Links estratégicos">
+          <a class="link" href="/andre-blos-aliatti-desenvolvedor-backend-java/">André Blos Aliatti desenvolvedor backend Java</a>
+          <a class="link" href="/projetos-andre-blos-aliatti/">Projetos Java</a>
+          <a class="link" href="/jornada-recomecar-ti-depois-dos-40/">Recomeçar na TI depois dos 40</a>
+          <a class="link" href="/medicflow/">MedicFlow plataforma médica</a>
+          <a class="link" href="/blog/">Blog</a>
+          <a class="link" href="/contato/">Contato</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>
