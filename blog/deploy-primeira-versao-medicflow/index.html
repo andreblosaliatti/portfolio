@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>
+    Deploy da primeira versão do MedicFlow: arquitetura, stack e aprendizados — André Blos Aliatti
+  </title>
+
+  <meta
+    name="description"
+    content="Deploy da primeira versão do MedicFlow por André Blos Aliatti: aplicação full stack com Java, Spring Boot, React, PostgreSQL, Flyway e JWT."
+  />
+
+  <meta name="author" content="André Blos Aliatti" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical"
+    href="https://andreblosaliatti.dev/blog/deploy-primeira-versao-medicflow/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title"
+    content="Deploy da primeira versão do MedicFlow — André Blos Aliatti" />
+  <meta property="og:description"
+    content="Arquitetura, stack e aprendizados de uma aplicação full stack em produção com Java, Spring Boot, React, PostgreSQL e JWT." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url"
+    content="https://andreblosaliatti.dev/blog/deploy-primeira-versao-medicflow/" />
+  <meta property="og:image"
+    content="https://andreblosaliatti.dev/assets/img/blog/medicflow-dashboard.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title"
+    content="Deploy da primeira versão do MedicFlow — André Blos Aliatti" />
+  <meta name="twitter:description"
+    content="Aplicação full stack em produção com Java, Spring Boot, React, PostgreSQL e JWT." />
+  <meta name="twitter:image"
+    content="https://andreblosaliatti.dev/assets/img/blog/medicflow-deploy-capa.png" />
+
+  <link rel="icon" href="/assets/favicon.png" />
+  <link rel="stylesheet" href="/css/global.css" />
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@awesome.me/webawesome@3.1.0/dist-cdn/styles/themes/default.css" />
+  <script type="module"
+    src="https://cdn.jsdelivr.net/npm/@awesome.me/webawesome@3.1.0/dist-cdn/webawesome.loader.js"></script>
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Deploy da primeira versão do MedicFlow",
+    "author": {
+      "@type": "Person",
+      "name": "André Blos Aliatti",
+      "url": "https://andreblosaliatti.dev/quem-e-andre-blos-aliatti"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "André Blos Aliatti"
+    },
+    "image": "https://andreblosaliatti.dev/assets/img/blog/medicflow-dashboard.png",
+    "mainEntityOfPage": "https://andreblosaliatti.dev/blog/deploy-primeira-versao-medicflow/"
+  }
+  </script>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-row">
+
+      <a class="brand" href="/" aria-label="Voltar para Home">
+        <img class="brand-logo"
+          src="/assets/img/logo-andre-transp.png"
+          alt="André Blos Aliatti"
+          onerror="this.style.display = 'none'" />
+        <span class="brand-text">André Blos Aliatti</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Navegação principal">
+        <a class="nav-link-desktop" href="/">Início</a>
+        <a class="nav-link-desktop" href="/quem-e-andre-blos-aliatti">Quem é</a>
+        <a class="nav-link-desktop" href="/projetos-andre-blos-aliatti">Projetos</a>
+        <a class="nav-link-desktop" href="/jornada-recomecar-ti-depois-dos-40">Jornada</a>
+        <a class="nav-link-desktop" href="/blog" aria-current="page">Blog</a>
+        <a class="nav-link-desktop" href="/medicflow">MedicFlow</a>
+        <a class="nav-link-desktop" href="/contato">Contato</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" type="button">
+        <wa-icon name="bars"></wa-icon>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="conteudo" class="main">
+
+    <section class="section hero">
+      <div class="container">
+
+        <p class="eyebrow">ARTIGO</p>
+
+        <h1 class="h1">
+          Deploy da primeira versão do MedicFlow: arquitetura, stack e aprendizados
+          <span class="h1-accent">
+            O ponto em que estudo isolado vira sistema real.
+          </span>
+        </h1>
+
+        <p class="muted">Abr 2026 • 8–10 min de leitura</p>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="post-cover">
+          <img src="/assets/img/blog/medicflow-deploy-capa.png"
+            alt="Dashboard do MedicFlow"
+            loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE -->
+    <section class="section">
+  <div class="container">
+
+    <article class="card article">
+
+      <p class="muted">Por André Blos Aliatti</p>
+
+      <p>
+        Depois de um período consistente de estudo, refatoração e organização da base técnica, subi a primeira versão funcional do 
+        <a href="/medicflow">MedicFlow</a>, uma aplicação web full stack voltada para gestão clínica e prontuário eletrônico.
+      </p>
+
+      <p>
+        Eu sou André Blos Aliatti, desenvolvedor backend em evolução, e esse deploy marcou um ponto importante: o momento em que conceitos estudados de forma isolada — backend, frontend, banco de dados e arquitetura — passaram a funcionar como um sistema integrado.
+      </p>
+
+      <p>
+        Até esse ponto, boa parte do aprendizado acontece de forma fragmentada. Quando a aplicação entra em produção, essas partes deixam de ser abstrações e passam a ter impacto direto no comportamento real do sistema.
+      </p>
+
+      <h2 class="h2">O que foi publicado nesta primeira versão</h2>
+
+      <p>
+        Essa primeira entrega já representa um fluxo completo de aplicação web, com backend, frontend e banco integrados de forma funcional.
+      </p>
+
+      <ul class="about-list">
+        <li>autenticação de usuários com controle de acesso</li>
+        <li>interface de login conectada ao backend</li>
+        <li>dashboard inicial com navegação estruturada</li>
+        <li>gestão de pacientes (CRUD completo)</li>
+        <li>estrutura de agenda e consultas</li>
+        <li>API REST com paginação e filtros</li>
+        <li>persistência em PostgreSQL</li>
+        <li>versionamento de banco com Flyway</li>
+      </ul>
+
+      <p>
+        Não se trata apenas de uma interface ou de endpoints isolados. Existe uma base funcional com regras de negócio, persistência consistente e comunicação entre camadas.
+      </p>
+
+      <h2 class="h2">Arquitetura e organização do backend</h2>
+
+      <p>
+        Um dos pontos centrais do projeto foi a decisão de estruturar o backend desde o início com separação clara de responsabilidades.
+      </p>
+
+      <ul class="about-list">
+        <li><strong>Controller</strong> → responsável pela entrada da API e exposição dos endpoints REST</li>
+        <li><strong>Service</strong> → responsável pelas regras de negócio</li>
+        <li><strong>Repository</strong> → responsável pelo acesso aos dados via JPA</li>
+        <li><strong>DTO</strong> → responsável por separar o modelo interno do contrato da API</li>
+      </ul>
+
+      <p>
+        Essa organização evita um dos problemas mais comuns em projetos iniciantes: acoplamento excessivo e mistura de responsabilidades, que tornam o sistema difícil de manter e evoluir.
+      </p>
+
+      <p>
+        Esse tipo de estrutura também permite crescimento progressivo do sistema sem necessidade de reescrita constante. Mais detalhes podem ser vistos na página de 
+        <a href="/projetos-andre-blos-aliatti">projetos</a>.
+      </p>
+
+      <h2 class="h2">Deploy: quando o sistema deixa de ser local</h2>
+
+      <p>
+        Colocar uma aplicação em produção muda completamente o nível de complexidade.
+      </p>
+
+      <p>
+        Enquanto tudo roda localmente, muitos problemas ficam ocultos. No deploy, entram fatores que não aparecem em estudos isolados:
+      </p>
+
+      <ul class="about-list">
+        <li>configuração de variáveis de ambiente</li>
+        <li>políticas de CORS</li>
+        <li>conexão com banco remoto</li>
+        <li>build e distribuição do frontend</li>
+        <li>orquestração de serviços em ambiente cloud</li>
+      </ul>
+
+      <p>
+        É nesse ponto que o projeto deixa de ser exercício e passa a ser um sistema com comportamento real, sujeito a falhas, ajustes e decisões técnicas mais críticas.
+      </p>
+
+      <h2 class="h2">Conclusão</h2>
+
+      <p>
+        Esse deploy deixou claro que software não é apenas código funcionando isoladamente. É integração de camadas, decisões e responsabilidades.
+      </p>
+
+      <p>Não basta criar endpoints.</p>
+      <p>Não basta construir interface.</p>
+      <p>Não basta conectar banco.</p>
+
+      <p>
+        O que sustenta um sistema é a estrutura por trás e a forma como essas partes se organizam ao longo do tempo.
+      </p>
+
+      <p>
+        Para entender melhor a trajetória por trás desse projeto, vale conhecer 
+        <a href="/quem-e-andre-blos-aliatti">quem é André Blos Aliatti</a> 
+        e acompanhar a 
+        <a href="/jornada-recomecar-ti-depois-dos-40">jornada na tecnologia</a>.
+      </p>
+
+      <hr />
+
+      <div class="cta-row">
+        <a class="btn primary" href="/blog">Voltar ao blog</a>
+        <a class="btn ghost" href="/projetos-andre-blos-aliatti">Ver projetos</a>
+      </div>
+
+    </article>
+
+  </div>
+</section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> André Blos Aliatti</p>
+
+      <div>
+        <a href="/quem-e-andre-blos-aliatti">André Blos Aliatti</a> |
+        <a href="/projetos-andre-blos-aliatti">Projetos</a> |
+        <a href="/jornada-recomecar-ti-depois-dos-40">Jornada</a> |
+        <a href="/medicflow">MedicFlow</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>
